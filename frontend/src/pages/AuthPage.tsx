@@ -4,7 +4,7 @@ import { Bot, Mail, Lock, Eye, EyeOff, User, Phone, Shield, AlertCircle, CheckCi
 import { useNavigate, Link, useLocation } from 'react-router-dom'
 import { useAppStore } from '../store/useAppStore'
 
-const API = 'http://localhost:5000'
+const API = import.meta.env.VITE_API_URL
 
 /* ── Input Field ── */
 const Field: React.FC<{

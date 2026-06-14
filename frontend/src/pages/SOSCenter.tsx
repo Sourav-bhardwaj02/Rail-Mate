@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Asterisk, Briefcase, Shield, AlertCircle, Contact, Phone, User, MapPin, CheckCircle, XCircle, Loader, PencilLine, Save, X } from 'lucide-react'
 import { useAppStore } from '../store/useAppStore'
 
-const API = 'http://localhost:5000'
+const API = import.meta.env.VITE_API_URL
 
 const EMERGENCY_TYPES = [
   { id: 'MEDICAL',      label: 'Medical',        sublabel: 'Request first aid or ambulance',         icon: Briefcase, color: '#A855F7' },

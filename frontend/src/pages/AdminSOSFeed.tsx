@@ -3,7 +3,7 @@ import { PageTopbar } from '../components/layout/Navbar'
 import { AlertTriangle, MapPin, User, Mail, Phone, Clock, CheckCircle, Loader, RefreshCw, Shield } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const API = 'http://localhost:5000'
+const API = import.meta.env.VITE_API_URL
 
 interface SOSAlert {
   id: string

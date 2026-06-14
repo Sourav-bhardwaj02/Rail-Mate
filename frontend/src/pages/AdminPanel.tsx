@@ -4,7 +4,7 @@ import { ShieldCheck, Bell, Settings, Users, AlertTriangle, Activity, Search } f
 import { useAppStore } from '../store/useAppStore'
 import { PageTopbar } from '../components/layout/Navbar'
 
-const API = 'http://localhost:5000'
+const API = import.meta.env.VITE_API_URL
 
 const AdminPanel: React.FC = () => {
   const { adminLogs } = useAppStore()

@@ -8,7 +8,7 @@ export default function Dashboard() {
   useEffect(() => {
     axios
       .get(
-        "http://localhost:5000/api/matches"
+        `${import.meta.env.VITE_API_URL}/api/matches`
       )
       .then((res) =>
         setMatches(res.data.data)
