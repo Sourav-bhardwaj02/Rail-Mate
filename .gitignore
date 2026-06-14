@@ -1,0 +1,42 @@
+# Environment files
+.env
+.env.local
+.env.production
+
+# Dependencies
+node_modules/
+frontend/node_modules/
+backend/node_modules/
+
+# Build outputs
+frontend/dist/
+backend/dist/
+
+# Prisma generated
+backend/node_modules/.prisma/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Uploads (sensitive data)
+backend/uploads/
+<<<<<<< HEAD
+node_modules/
+venv/
+dist/
+build/
+.env
+__pycache__/
+*.pyc
+storage/embeddings/
+=======
+>>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98

@@ -1,0 +1,17 @@
+fastapi
+uvicorn
+python-multipart
+
+numpy
+opencv-python
+
+torch
+torchvision
+torchaudio
+
+ultralytics
+
+insightface
+
+requests
+huggingface_hub

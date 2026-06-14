@@ -1,0 +1,104 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:16-alpine
+    container_name: railmate-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: railmate_user
+      POSTGRES_PASSWORD: railmate_password
+      POSTGRES_DB: railmate_db
+    ports:
+      - "5432:5432"
+    networks:
+      - railmate-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U railmate_user -d railmate_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # Backend API
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: railmate-backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+<<<<<<< HEAD
+      ai-service:
+        condition: service_started
+=======
+>>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgresql://railmate_user:railmate_password@postgres:5432/railmate_db
+      JWT_SECRET: your-super-secret-jwt-key
+      JWT_EXPIRES_IN: 7d
+      CORS_ORIGINS: http://localhost:5173
+      RATE_LIMIT_WINDOW_MS: 60000
+      RATE_LIMIT_MAX: 60
+<<<<<<< HEAD
+      AI_SERVICE_URL: http://ai-service:8000
+=======
+>>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
+    ports:
+      - "5000:5000"
+    networks:
+      - railmate-network
+    command: sh -c "npm run start"
+
+  # React Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: railmate-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    environment:
+      VITE_API_URL: http://localhost:5000
+    ports:
+      - "5173:5173"
+    networks:
+      - railmate-network
+
+  # Missing Person AI Service
+  ai-service:
+    build:
+      context: ./ai-service
+      dockerfile: Dockerfile
+    container_name: railmate-ai
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    networks:
+      - railmate-network
+    volumes:
+<<<<<<< HEAD
+      - ai_embeddings:/app/storage/embeddings
+=======
+      - ./missing-person-tracker/ai-service:/app
+>>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+networks:
+  railmate-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+<<<<<<< HEAD
+    driver: local
+  ai_embeddings:
+=======
+>>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
+    driver: local

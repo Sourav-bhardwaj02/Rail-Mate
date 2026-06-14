@@ -1,0 +1,74 @@
+// This is your Prisma schema file
+// Learn more: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id            String     @id @default(cuid())
+  email         String     @unique
+  name          String
+  passwordHash  String
+  phone         String?
+  guardianEmail String?
+<<<<<<< HEAD
+  guardianName  String?
+=======
+>>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
+  role          String     @default("USER")
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  sosAlerts     SOSAlert[]
+}
+
+model Station {
+  id        String   @id @default(cuid())
+  name      String
+  code      String   @unique
+  city      String
+  state     String
+  lat       Float
+  lng       Float
+  createdAt DateTime @default(now())
+}
+
+model Route {
+  id           String   @id @default(cuid())
+  fromStation  String
+  toStation    String
+  travelDate   DateTime
+  userId       String?
+  routeData    String   // Changed from Json to String for SQLite compatibility
+  createdAt    DateTime @default(now())
+}
+
+model SOSAlert {
+  id         String        @id @default(cuid())
+  type       String
+  location   String
+  lat        Float?
+  lng        Float?
+  notes      String?
+  status     String        @default("ACTIVE")
+  userId     String?
+  user       User?         @relation(fields: [userId], references: [id])
+  createdAt  DateTime      @default(now())
+  resolvedAt DateTime?
+}
+
+model CrowdData {
+  id          String   @id @default(cuid())
+  stationCode String
+  platformId  String
+  occupancy   Int
+  level       String
+  recordedAt  DateTime @default(now())
+
+  @@index([stationCode, recordedAt])
+}

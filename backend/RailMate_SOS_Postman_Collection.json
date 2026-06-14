@@ -1,0 +1,99 @@
+{
+  "info": {
+    "name": "RailMate SOS & Auth Endpoints",
+    "description": "Collection to test the RailMate SOS email dispatch API and Prisma Authentication.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Register User",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"testuser@example.com\",\n  \"password\": \"SecurePass123\",\n  \"phone\": \"9876543210\",\n  \"guardianEmail\": \"guardian_test@example.com\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:475/api/auth/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "475",
+          "path": [
+            "api",
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "2. Login User",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"testuser@example.com\",\n  \"password\": \"SecurePass123\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:475/api/auth/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "475",
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "3. Trigger SOS Alert (With userId)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"type\": \"MEDICAL\",\n  \"location\": \"Platform 2, near exit gate\",\n  \"notes\": \"Passenger needs immediate medical attention for chest pain.\",\n  \"userId\": \"replace_with_user_id_from_login\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:475/api/sos/alert",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "475",
+          "path": [
+            "api",
+            "sos",
+            "alert"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
