@@ -2,19 +2,11 @@
   "name": "railmate-backend",
   "version": "1.0.0",
   "description": "RailMate + Missing Person Backend",
-<<<<<<< HEAD
   "main": "dist/index.js",
   "scripts": {
     "dev": "nodemon --exec ts-node src/index.ts",
     "build": "tsc",
     "start": "node dist/index.js",
-=======
-  "main": "dist/server.js",
-  "scripts": {
-    "dev": "nodemon --exec ts-node src/server.ts",
-    "build": "tsc",
-    "start": "node dist/server.js",
->>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "db:studio": "prisma studio"

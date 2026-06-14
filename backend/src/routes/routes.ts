@@ -1,6 +1,5 @@
 import { Router, Request, Response } from 'express'
 import { routePlanSchema } from '../validators/schemas'
-<<<<<<< HEAD
 import { GoogleGenAI } from '@google/genai'
 
 export const routeRoutes = Router()
@@ -38,87 +37,6 @@ function formatDuration(durationStr: string): string {
 }
 
 routeRoutes.post('/plan', async (req: Request, res: Response): Promise<void> => {
-=======
-import { AppError } from '../middleware/errorHandler'
-
-export const routeRoutes = Router()
-
-// Mock AI route planning engine
-function generateRoutes(from: string, to: string, date: string) {
-  const basePrice = Math.floor(Math.random() * 800) + 400
-  return [
-    {
-      id: `route-direct-${Date.now()}`,
-      type: 'DIRECT',
-      label: 'Direct Route',
-      aiRecommended: false,
-      trains: [{
-        name: 'Rajdhani Express',
-        number: '12301',
-        from, to,
-        departure: '16:25',
-        arrival: '08:15+1',
-        duration: '15h 50m',
-        class: '3A',
-        price: basePrice,
-        occupancy: 72,
-        delayRisk: 'MEDIUM',
-      }],
-      totalDuration: '15h 50m',
-      totalCost: basePrice,
-      journeyScore: 74,
-      crowdScore: 'MEDIUM',
-      exchanges: 0,
-      tags: ['Direct', 'AC 3-Tier'],
-      reasoning: `Direct connection from ${from} to ${to}. Moderate crowd levels predicted.`,
-    },
-    {
-      id: `route-ai-${Date.now() + 1}`,
-      type: 'ALTERNATIVE',
-      label: 'AI Recommended',
-      aiRecommended: true,
-      trains: [
-        { name: 'Shatabdi Express', number: '12009', from, to: 'Junction', departure: '06:15', arrival: '14:30', duration: '8h 15m', class: 'CC', price: Math.floor(basePrice * 0.55), occupancy: 45, delayRisk: 'LOW' },
-        { name: 'Express Link', number: '11463', from: 'Junction', to, departure: '16:00', arrival: '22:30', duration: '6h 30m', class: 'SL', price: Math.floor(basePrice * 0.25), occupancy: 38, delayRisk: 'LOW' },
-      ],
-      totalDuration: '16h 15m',
-      totalCost: Math.floor(basePrice * 0.8),
-      journeyScore: 91,
-      crowdScore: 'LOW',
-      exchanges: 1,
-      tags: ['Least Crowded', 'Best Value', 'AI Pick'],
-      reasoning: `Lower crowd on connecting route. ${Math.floor(basePrice * 0.2)} savings with manageable layover at junction.`,
-    },
-    {
-      id: `route-fast-${Date.now() + 2}`,
-      type: 'ALTERNATIVE',
-      label: 'Fastest Route',
-      aiRecommended: false,
-      trains: [{
-        name: 'Vande Bharat Express',
-        number: '22229',
-        from, to,
-        departure: '06:00',
-        arrival: '18:30',
-        duration: '12h 30m',
-        class: 'EC',
-        price: Math.floor(basePrice * 1.8),
-        occupancy: 88,
-        delayRisk: 'HIGH',
-      }],
-      totalDuration: '12h 30m',
-      totalCost: Math.floor(basePrice * 1.8),
-      journeyScore: 62,
-      crowdScore: 'HIGH',
-      exchanges: 0,
-      tags: ['Fastest', 'Premium'],
-      reasoning: 'Fastest option but premium cost and high predicted occupancy.',
-    },
-  ]
-}
-
-routeRoutes.post('/plan', (req: Request, res: Response) => {
->>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
   const result = routePlanSchema.safeParse(req.body)
   if (!result.success) {
     res.status(400).json({ error: 'Invalid input', details: result.error.flatten().fieldErrors })
@@ -132,7 +50,6 @@ routeRoutes.post('/plan', (req: Request, res: Response) => {
     return
   }
 
-<<<<<<< HEAD
   const fromCode = STATION_MAP[from] || from
   const toCode = STATION_MAP[to] || to
   const [year, month, day] = date.split('-')
@@ -281,8 +198,4 @@ routeRoutes.post('/plan', (req: Request, res: Response) => {
     console.error('[ROUTE PLANNER] Error:', error)
     res.status(500).json({ error: 'Failed to fetch routes' })
   }
-=======
-  const routes = generateRoutes(from, to, date)
-  res.json({ success: true, data: routes, generatedAt: new Date().toISOString() })
->>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
 })

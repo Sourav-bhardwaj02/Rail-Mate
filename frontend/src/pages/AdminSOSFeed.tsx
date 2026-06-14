@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useEffect, useState, useCallback } from 'react'
 import { PageTopbar } from '../components/layout/Navbar'
 import { AlertTriangle, MapPin, User, Mail, Phone, Clock, CheckCircle, Loader, RefreshCw, Shield } from 'lucide-react'
@@ -78,21 +77,10 @@ const AdminSOSFeed: React.FC = () => {
 
   const filtered = alerts.filter(a => filter === 'ALL' ? true : a.status === filter)
   const activeCount = alerts.filter(a => a.status === 'ACTIVE').length
-=======
-import React from 'react'
-import { PageTopbar } from '../components/layout/Navbar'
-import { AlertTriangle, MapPin } from 'lucide-react'
-import { useAppStore } from '../store/useAppStore'
-
-const AdminSOSFeed: React.FC = () => {
-  const { adminLogs } = useAppStore()
-  const sosLogs = adminLogs.filter(log => log.event.toLowerCase().includes('sos'))
->>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
 
   return (
     <div style={{ background: '#161618', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <PageTopbar pageTitle="Live SOS Feed" />
-<<<<<<< HEAD
 
       <div className="px-4 py-6 md:px-8 md:py-10 max-w-[1200px] mx-auto w-full flex-1">
 
@@ -247,52 +235,6 @@ const AdminSOSFeed: React.FC = () => {
       </div>
 
       <style>{`@keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }`}</style>
-=======
-      
-      <div className="px-4 py-6 md:px-8 md:py-10 max-w-[1200px] mx-auto w-full flex-1">
-        <div style={{ marginBottom: 32 }}>
-          <h1 style={{ fontSize: 28, fontWeight: 700, color: '#F8FAFC', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 12 }}>
-            <AlertTriangle size={32} color="#EF4444" /> Active SOS Alerts
-          </h1>
-          <p style={{ color: '#9CA3AF', fontSize: 14 }}>
-            Real-time feed of emergency distress signals across the network.
-          </p>
-        </div>
-
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-          {sosLogs.length === 0 ? (
-            <div style={{ color: '#9CA3AF', padding: 24, textAlign: 'center', background: '#1A1C20', borderRadius: 12 }}>
-              No active SOS alerts. System is clear.
-            </div>
-          ) : (
-            sosLogs.map(log => (
-              <div key={log.id} style={{ background: '#1A1C20', border: '1px solid #EF4444', borderRadius: 12, padding: 24 }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 16 }}>
-                  <div>
-                    <h3 style={{ fontSize: 16, fontWeight: 700, color: '#F8FAFC', marginBottom: 4 }}>{log.event}</h3>
-                    <div style={{ fontSize: 13, color: '#9CA3AF' }}>User: {log.user} • Time: {log.time}</div>
-                  </div>
-                  <div style={{ fontSize: 12, fontWeight: 700, color: '#EF4444', background: 'rgba(239, 68, 68, 0.1)', padding: '4px 12px', borderRadius: 12, display: 'flex', alignItems: 'center' }}>
-                    {log.status}
-                  </div>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: '#E2E8F0', fontSize: 14 }}>
-                  <MapPin size={18} color="#38BDF8" /> {log.location}
-                </div>
-                <div style={{ marginTop: 24, display: 'flex', gap: 12 }}>
-                  <button style={{ background: '#EF4444', color: '#FFF', border: 'none', borderRadius: 8, padding: '10px 16px', fontSize: 13, fontWeight: 600, cursor: 'pointer' }}>
-                    Dispatch Security
-                  </button>
-                  <button style={{ background: 'transparent', color: '#F8FAFC', border: '1px solid #475569', borderRadius: 8, padding: '10px 16px', fontSize: 13, fontWeight: 600, cursor: 'pointer' }}>
-                    Resolve Alert
-                  </button>
-                </div>
-              </div>
-            ))
-          )}
-        </div>
-      </div>
->>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
     </div>
   )
 }

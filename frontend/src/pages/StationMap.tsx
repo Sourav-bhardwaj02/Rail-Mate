@@ -7,7 +7,6 @@ import { Search, Navigation } from 'lucide-react'
 const FILTERS = ['All', 'Lifts', 'Escalators', 'Washrooms', 'Food', 'Accessible Routes']
 
 const MAP_POINTS = [
-<<<<<<< HEAD
   { id: 'p1', type: 'PLATFORM', name: 'Platform 1', desc: 'Rajdhani Express — Departs 16:25 · LOW CROWD', crowd: 'LOW' as const,
     accessible: true, svgX: '24%', svgY: '24%' },
   { id: 'p2', type: 'PLATFORM', name: 'Platform 2', desc: 'Shatabdi — Departs 06:00 · HIGH CROWD', crowd: 'HIGH' as const,
@@ -22,18 +21,6 @@ const MAP_POINTS = [
     accessible: true, svgX: '10%', svgY: '50%' },
   { id: 'f1', type: 'FOOD', name: 'Food Court', desc: 'Multiple food stalls, cafeteria and coffee shop.', crowd: 'LOW' as const,
     accessible: true, svgX: '90%', svgY: '50%' },
-=======
-  { id: 'p1', type: 'PLATFORM', name: 'Platform 1', desc: 'Rajdhani Express — Departs 16:25', crowd: 'LOW' as const,
-    accessible: true, svgX: '20%', svgY: '28%' },
-  { id: 'p2', type: 'PLATFORM', name: 'Platform 2', desc: 'Shatabdi — Departs 06:00 · HIGH CROWD', crowd: 'HIGH' as const,
-    accessible: true, svgX: '72%', svgY: '28%' },
-  { id: 'mc', type: 'CONCOURSE', name: 'Main Concourse L5A', desc: 'Connect to Platform 1 & 2. This platform is accessible; has elevator access.', crowd: 'MEDIUM' as const,
-    accessible: true, svgX: '46%', svgY: '52%' },
-  { id: 'e1', type: 'EXIT', name: 'Exit Gate 1', desc: 'Main entrance — taxi and auto-rickshaw stand nearby.', crowd: 'LOW' as const,
-    accessible: true, svgX: '20%', svgY: '75%' },
-  { id: 'f1', type: 'FOOD', name: 'Food Court', desc: 'Multiple food stalls, cafeteria and coffee shop.', crowd: 'LOW' as const,
-    accessible: true, svgX: '72%', svgY: '75%' },
->>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
 ]
 
 const crowdColor = (c: 'LOW' | 'MEDIUM' | 'HIGH') =>
@@ -42,7 +29,6 @@ const crowdColor = (c: 'LOW' | 'MEDIUM' | 'HIGH') =>
 /* ─── Custom SVG station map ─── */
 const StationSVGMap: React.FC<{ selected: string | null; onSelect: (id: string) => void }> = ({ selected, onSelect }) => (
   <svg viewBox="0 0 800 500" width="100%" height="100%" style={{ display: 'block' }}>
-<<<<<<< HEAD
     <defs>
       <pattern id="map-p1" patternUnits="userSpaceOnUse" width="290" height="145">
         <image href="/station-maps.png" x="0" y="0" width="580" height="290" preserveAspectRatio="none" />
@@ -57,8 +43,6 @@ const StationSVGMap: React.FC<{ selected: string | null; onSelect: (id: string) 
         <image href="/station-maps.png" x="-290" y="-145" width="580" height="290" preserveAspectRatio="none" />
       </pattern>
     </defs>
-=======
->>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
     {/* Background */}
     <rect width="800" height="500" fill="#0a1628" />
 
@@ -70,7 +54,6 @@ const StationSVGMap: React.FC<{ selected: string | null; onSelect: (id: string) 
     {/* Vertical corridor */}
     <rect x="360" y="30" width="80" height="440" fill="rgba(30,41,59,0.4)" />
 
-<<<<<<< HEAD
     {/* Platform 1 — LOW CROWD indicator */}
     <rect x="50" y="50" width="290" height="145" rx="6" fill="url(#map-p1)" stroke="rgba(16,185,129,0.5)" strokeWidth="2" />
     <rect x="50" y="50" width="290" height="145" rx="6" fill="rgba(16,185,129,0.25)" style={{ pointerEvents: 'none' }} />
@@ -102,23 +85,6 @@ const StationSVGMap: React.FC<{ selected: string | null; onSelect: (id: string) 
     <text x="605" y="375" textAnchor="middle" fill="#ffffff" fontSize="16" fontFamily="Inter,sans-serif" fontWeight="700">Platform 4</text>
     <rect x="534" y="390" width="142" height="22" rx="4" fill="rgba(16,185,129,0.9)" />
     <text x="605" y="405" textAnchor="middle" fill="#ffffff" fontSize="10" fontFamily="Inter,sans-serif" fontWeight="700">● LOW CROWD</text>
-=======
-    {/* Platform 1 */}
-    <rect x="50" y="50" width="290" height="145" rx="6" fill="rgba(37,99,235,0.06)" stroke="rgba(37,99,235,0.18)" strokeWidth="1" />
-    <text x="195" y="130" textAnchor="middle" fill="rgba(248,250,252,0.7)" fontSize="16" fontFamily="Inter,sans-serif" fontWeight="600">Platform 1</text>
-
-    {/* Platform 2 — HIGH CROWD indicator */}
-    <rect x="460" y="50" width="290" height="145" rx="6" fill="rgba(239,68,68,0.06)" stroke="rgba(239,68,68,0.3)" strokeWidth="1.5" />
-    <text x="605" y="115" textAnchor="middle" fill="rgba(248,250,252,0.7)" fontSize="16" fontFamily="Inter,sans-serif" fontWeight="600">Platform 2</text>
-    <rect x="534" y="130" width="142" height="22" rx="4" fill="rgba(239,68,68,0.2)" />
-    <text x="605" y="145" textAnchor="middle" fill="#EF4444" fontSize="10" fontFamily="Inter,sans-serif" fontWeight="700">● HIGH CROWD</text>
-
-    {/* Platform 3 & 4 */}
-    <rect x="50" y="310" width="290" height="145" rx="6" fill="rgba(37,99,235,0.06)" stroke="rgba(37,99,235,0.18)" strokeWidth="1" />
-    <text x="195" y="390" textAnchor="middle" fill="rgba(248,250,252,0.7)" fontSize="16" fontFamily="Inter,sans-serif" fontWeight="600">Platform 3</text>
-    <rect x="460" y="310" width="290" height="145" rx="6" fill="rgba(37,99,235,0.06)" stroke="rgba(37,99,235,0.18)" strokeWidth="1" />
-    <text x="605" y="390" textAnchor="middle" fill="rgba(248,250,252,0.7)" fontSize="16" fontFamily="Inter,sans-serif" fontWeight="600">Platform 4</text>
->>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
 
     {/* Main Concourse label */}
     <text x="400" y="258" textAnchor="middle" fill="rgba(148,163,184,0.45)" fontSize="13" fontFamily="Inter,sans-serif">Main Concourse</text>

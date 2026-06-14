@@ -117,17 +117,16 @@ const About: React.FC = () => {
             <h3 style={{ fontSize: 14, fontWeight: 700, color: '#A855F7', marginBottom: 20 }}>The Team</h3>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
               {[
-<<<<<<< HEAD
+
                 { name: 'Sourav', role: 'UX Engineering & Ai Integration' },
                 { name: 'Shivam', role: 'Backend Engineer' },
                 { name: 'Praveen', role: 'Data Systems' },
                 { name: 'Hanish', role: 'Frontend Engineer' },
-=======
+
                 { name: 'Alex', role: 'UX Engineering' },
                 { name: 'Sam', role: 'AI Integration' },
                 { name: 'Jordan', role: 'Data Systems' },
                 { name: 'Casey', role: 'Accessibility Lead' },
->>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
               ].map(member => (
                 <div key={member.name} style={{ 
                   background: '#1A1C20', padding: '20px 16px', borderRadius: 8,

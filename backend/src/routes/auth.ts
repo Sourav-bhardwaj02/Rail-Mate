@@ -39,11 +39,7 @@ authRoutes.post('/register', async (req: Request, res: Response) => {
     const token = jwt.sign(
       { userId: user.id, email: user.email, role: user.role },
       process.env.JWT_SECRET || 'fallback-dev-secret',
-<<<<<<< HEAD
       { expiresIn: process.env.JWT_EXPIRES_IN || '7d' } as any
-=======
-      { expiresIn: process.env.JWT_EXPIRES_IN || '7d' }
->>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
     )
 
     // httpOnly cookie
@@ -94,11 +90,7 @@ authRoutes.post('/login', async (req: Request, res: Response) => {
     const token = jwt.sign(
       { userId: user.id, email: user.email, role: user.role },
       process.env.JWT_SECRET || 'fallback-dev-secret',
-<<<<<<< HEAD
       { expiresIn: process.env.JWT_EXPIRES_IN || '7d' } as any
-=======
-      { expiresIn: process.env.JWT_EXPIRES_IN || '7d' }
->>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
     )
 
     res.cookie('auth_token', token, {
@@ -119,7 +111,6 @@ authRoutes.post('/logout', (_req: Request, res: Response) => {
   res.clearCookie('auth_token')
   res.json({ success: true })
 })
-<<<<<<< HEAD
 
 authRoutes.get('/profile/:id', async (req: Request, res: Response) => {
   try {
@@ -149,5 +140,3 @@ authRoutes.patch('/guardian', async (req: Request, res: Response) => {
     res.status(500).json({ error: 'Failed to update guardian' })
   }
 })
-=======
->>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98

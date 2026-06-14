@@ -1,7 +1,6 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Asterisk, Eye, Briefcase, Shield, AlertCircle, Contact, Phone, User, MapPin, CheckCircle, XCircle, Loader, PencilLine, Save, X } from 'lucide-react'
+import { Asterisk, Briefcase, Shield, AlertCircle, Contact, Phone, User, MapPin, CheckCircle, XCircle, Loader, PencilLine, Save, X } from 'lucide-react'
 import { useAppStore } from '../store/useAppStore'
 
 const API = 'http://localhost:5000'
@@ -161,118 +160,10 @@ const SOSCenter: React.FC = () => {
                 {status === 'sending' || status === 'locating'
                   ? <Loader size={36} color="#7F1D1D" style={{ animation: 'spin 1s linear infinite' }} />
                   : <Asterisk size={40} color="#7F1D1D" strokeWidth={3} />}
-=======
-import React from 'react'
-import { motion } from 'framer-motion'
-import { Asterisk, Eye, Briefcase, Shield, AlertCircle, Contact, Phone, User, Settings, Accessibility } from 'lucide-react'
-import { useAppStore } from '../store/useAppStore'
-
-const EMERGENCY_TYPES = [
-  { id: 'MEDICAL', label: 'Medical', sublabel: 'Request First aid or ambulance', icon: Briefcase, color: '#A855F7' },
-  { id: 'WOMEN_SAFETY', label: 'Women Safety', sublabel: 'Direct line to dedicated personnel', icon: Shield, color: '#A855F7' },
-  { id: 'SECURITY', label: 'Security Issue', sublabel: 'Report suspicious activity or harassment', icon: AlertCircle, color: '#EF4444' },
-]
-
-const CONTACTS = [
-  { name: 'Sarah Johnson', relation: 'Sister', avatar: 'https://i.pravatar.cc/150?u=sarah' },
-  { name: 'David Chen', relation: 'Husband', avatar: null },
-]
-
-const SOSCenter: React.FC = () => {
-  const { sosActive, setSosActive, isLoggedIn, setShowLoginModal, addAdminLog } = useAppStore()
-
-  return (
-    <div style={{ background: '#161618', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      
-      {/* Top Navbar */}
-      <div className="px-4 py-4 md:px-10 md:py-6 flex justify-between items-center relative">
-        <div className="font-extrabold text-base text-[#F8FAFC]">RailMate AI</div>
-        <div className="hidden md:flex gap-8 absolute left-1/2 -translate-x-1/2">
-          {['Route Planner', 'Station Map', 'Crowd Monitoring'].map(item => (
-            <div key={item} style={{ fontSize: 12, color: '#9CA3AF', cursor: 'pointer', fontWeight: 600 }}>{item}</div>
-          ))}
-          <div style={{ fontSize: 12, color: '#F8FAFC', cursor: 'pointer', fontWeight: 600, borderBottom: '2px solid #F8FAFC', paddingBottom: 6 }}>SOS Center</div>
-        </div>
-        <div style={{ display: 'flex', gap: 16 }}>
-          <Accessibility size={18} color="#9CA3AF" cursor="pointer" />
-          <Settings size={18} color="#9CA3AF" cursor="pointer" />
-        </div>
-      </div>
-      <div style={{ height: 2, background: '#6D28D9', width: '100%' }}></div>
-
-      <div className="px-4 md:px-8 max-w-[900px] mx-auto w-full flex-1">
-        
-        {/* ── SOS hero ── */}
-        <div style={{ textAlign: 'center', padding: '48px 0 32px' }}>
-          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 32 }}>
-            <motion.button
-              onClick={async () => {
-                if (!isLoggedIn) {
-                  setShowLoginModal(true)
-                } else {
-                  setSosActive(true)
-                  try {
-                    // Fetch the user ID from store
-                    const currentUserId = useAppStore.getState().userId
-
-                    const res = await fetch('http://localhost:4750/api/sos/alert', {
-                      method: 'POST',
-                      headers: { 'Content-Type': 'application/json' },
-                      body: JSON.stringify({
-                        type: 'SECURITY', // Defaulting to security for the main button
-                        location: 'Current GPS Location (Platform 4)',
-                        notes: 'Triggered from main SOS button',
-                        userId: currentUserId || undefined
-                      })
-                    })
-                    
-                    const data = await res.json()
-                    if (data.success) {
-                      addAdminLog({
-                        event: 'SOS Alert Dispatched',
-                        user: currentUserId || 'User',
-                        location: 'Platform 4 (GPS)',
-                        status: 'Active',
-                        color: '#EF4444'
-                      })
-                      alert('SOS Alert Dispatched to Authorities & Guardian!')
-                    } else {
-                      alert('Failed to dispatch SOS: ' + (data.error || 'Unknown error'))
-                      setSosActive(false)
-                    }
-                  } catch (err) {
-                    console.error('SOS Error:', err)
-                    alert('Could not connect to the backend server. Is it running on port 4750?')
-                    setSosActive(false)
-                  }
-                }
-              }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              animate={sosActive ? {
-                boxShadow: ['0 0 20px rgba(239,68,68,0.5)', '0 0 80px rgba(239,68,68,1)', '0 0 20px rgba(239,68,68,0.5)']
-              } : { boxShadow: '0 0 0px rgba(239,68,68,0)' }}
-              transition={sosActive ? { repeat: Infinity, duration: 1.5, ease: "easeInOut" } : {}}
-              style={{
-                width: 160, height: 160, borderRadius: '50%',
-                background: sosActive ? '#991B1B' : '#7F1D1D',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                border: 'none', cursor: 'pointer'
-              }}
-            >
-              <div style={{
-                width: 110, height: 110, borderRadius: '50%',
-                background: '#FECACA',
-                display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.3)'
-              }}>
-                <Asterisk size={40} color="#7F1D1D" strokeWidth={3} />
->>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
                 <span style={{ fontSize: 16, fontWeight: 800, color: '#7F1D1D', marginTop: 4, letterSpacing: 1 }}>SOS</span>
               </div>
             </motion.button>
           </div>
-<<<<<<< HEAD
           <div style={{ fontWeight: 400, fontSize: 26, marginBottom: 12, color: '#F8FAFC', fontFamily: 'Georgia, serif' }}>Immediate Assistance</div>
           <p style={{ fontSize: 13, color: '#9CA3AF', maxWidth: 400, margin: '0 auto', lineHeight: 1.6 }}>
             Tap to alert station security and your registered guardian instantly via email.
@@ -328,63 +219,11 @@ const SOSCenter: React.FC = () => {
                 <div style={{ fontWeight: 700, fontSize: 15, color: '#F8FAFC', marginBottom: 8 }}>{type.label}</div>
                 <div style={{ fontSize: 12, color: '#9CA3AF', lineHeight: 1.5, marginBottom: 12 }}>{type.sublabel}</div>
                 <div style={{ fontSize: 11, color: type.color, fontWeight: 600 }}>Tap to send SOS →</div>
-=======
-
-          <div style={{ fontWeight: 400, fontSize: 26, marginBottom: 12, color: '#F8FAFC', fontFamily: 'Georgia, serif' }}>
-            Immediate Assistance
-          </div>
-          <p style={{ fontSize: 13, color: '#9CA3AF', maxWidth: 400, margin: '0 auto', lineHeight: 1.6 }}>
-            Tap the button above to instantly alert station security<br/>and emergency services to your location.
-          </p>
-        </div>
-
-        {/* ── Live location bar ── */}
-        <div className="bg-[#202125] rounded-lg p-4 md:px-5 md:py-4 mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-l-4 border-blue-500">
-          <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-            <div style={{ width: 40, height: 40, borderRadius: '50%', background: 'rgba(59,130,246,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Eye size={20} color="#3B82F6" />
-            </div>
-            <div>
-              <div style={{ fontSize: 10, fontWeight: 700, color: '#9CA3AF', letterSpacing: 1, marginBottom: 4 }}>LIVE LOCATION TRACKING</div>
-              <div style={{ fontSize: 14, fontWeight: 600, color: '#F8FAFC' }}>Platform 4, Sector B</div>
-            </div>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#3B82F6', display: 'inline-block' }} className="dot-pulse" />
-            <span style={{ fontSize: 12, fontWeight: 600, color: '#3B82F6' }}>Active Tracking</span>
-          </div>
-        </div>
-
-        {/* ── Emergency type cards ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-          {EMERGENCY_TYPES.map(type => {
-            const Icon = type.icon
-            return (
-              <motion.button
-                key={type.id}
-                whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}
-                style={{
-                  background: '#202125', border: 'none', borderRadius: 12, padding: '24px 20px', 
-                  cursor: 'pointer', textAlign: 'left', display: 'flex', flexDirection: 'column'
-                }}
-              >
-                <div style={{ 
-                  width: 36, height: 36, borderRadius: '50%', 
-                  background: `rgba(${type.color === '#EF4444' ? '239,68,68' : '168,85,247'}, 0.1)`, 
-                  border: `1px solid rgba(${type.color === '#EF4444' ? '239,68,68' : '168,85,247'}, 0.3)`,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16 
-                }}>
-                  <Icon size={16} color={type.color} />
-                </div>
-                <div style={{ fontWeight: 700, fontSize: 15, color: '#F8FAFC', marginBottom: 8 }}>{type.label}</div>
-                <div style={{ fontSize: 12, color: '#9CA3AF', lineHeight: 1.5 }}>{type.sublabel}</div>
->>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
               </motion.button>
             )
           })}
         </div>
 
-<<<<<<< HEAD
         {/* ── Guardian Card ── */}
         <div style={{ background: '#202125', borderRadius: 12, padding: '24px', marginBottom: 20 }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
@@ -475,70 +314,22 @@ const SOSCenter: React.FC = () => {
             <a href="tel:182" style={{ width: 40, height: 40, borderRadius: '50%', background: '#EF4444', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', textDecoration: 'none' }}>
               <Phone size={18} fill="currentColor" />
             </a>
-=======
-        {/* ── Emergency contacts ── */}
-        <div style={{ background: '#202125', borderRadius: 12, padding: '24px' }}>
-          <div style={{ fontWeight: 700, fontSize: 14, color: '#F8FAFC', marginBottom: 20, display: 'flex', alignItems: 'center', gap: 8 }}>
-            <Contact size={16} color="#9CA3AF" /> Emergency Contacts
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-            {CONTACTS.map((c) => (
-              <div key={c.name} style={{ 
-                display: 'flex', alignItems: 'center', justifyContent: 'space-between', 
-                background: '#161618', padding: '12px 16px', borderRadius: 8 
-              }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-                  {c.avatar ? (
-                    <img src={c.avatar} alt={c.name} style={{ width: 40, height: 40, borderRadius: '50%', objectFit: 'cover' }} />
-                  ) : (
-                    <div style={{ width: 40, height: 40, borderRadius: '50%', background: '#374151', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#9CA3AF' }}>
-                      <User size={20} />
-                    </div>
-                  )}
-                  <div>
-                    <div style={{ fontWeight: 600, fontSize: 14, color: '#F8FAFC' }}>{c.name}</div>
-                    <div style={{ fontSize: 12, color: '#9CA3AF' }}>{c.relation}</div>
-                  </div>
-                </div>
-                <button aria-label={`Call ${c.name}`} style={{
-                  width: 40, height: 40, borderRadius: '50%',
-                  background: '#A855F7', border: 'none',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: 'white',
-                }}>
-                  <Phone size={18} fill="currentColor" />
-                </button>
-              </div>
-            ))}
->>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
           </div>
         </div>
 
         {/* Footer */}
-<<<<<<< HEAD
         <div className="mt-6 flex flex-col md:flex-row justify-between items-center gap-4 border-t border-white/5 pt-6 pb-8">
           <span style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>RailMate AI</span>
           <div className="flex flex-wrap justify-center gap-6">
-=======
-        <div className="mt-10 flex flex-col md:flex-row justify-between items-center gap-4 border-t border-white/5 pt-6 pb-6 text-center md:text-left">
-          <span style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>RailMate AI</span>
-          <div className="flex flex-wrap justify-center gap-4 md:gap-6">
->>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
             {['Emergency Contacts', 'Accessibility Policy', 'System Health', 'Terms'].map(l => (
               <a key={l} href="#" style={{ fontSize: 11, color: '#64748B', textDecoration: 'none', fontWeight: 500 }}>{l}</a>
             ))}
           </div>
-<<<<<<< HEAD
           <span style={{ fontSize: 11, color: '#64748B' }}>© 2024 RailMate AI.</span>
         </div>
 
       </div>
       <style>{`@keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }`}</style>
-=======
-          <span style={{ fontSize: 11, color: '#64748B' }}>© 2024 RailMate AI. Modern Minimalist Railway Support.</span>
-        </div>
-
-      </div>
->>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
     </div>
   )
 }

@@ -1,14 +1,9 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from 'react'
-=======
-import React from 'react'
->>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
 import { motion } from 'framer-motion'
-import { PageTopbar } from '../components/layout/Navbar'
-import { Users, AlertTriangle, ShieldCheck, Activity, Settings, Search, Bell } from 'lucide-react'
+import { ShieldCheck, Bell, Settings, Users, AlertTriangle, Activity, Search } from 'lucide-react'
 import { useAppStore } from '../store/useAppStore'
+import { PageTopbar } from '../components/layout/Navbar'
 
-<<<<<<< HEAD
 const API = 'http://localhost:5000'
 
 const AdminPanel: React.FC = () => {
@@ -27,11 +22,7 @@ const AdminPanel: React.FC = () => {
     const t = setInterval(load, 10000)
     return () => clearInterval(t)
   }, [])
-=======
-const AdminPanel: React.FC = () => {
-  const { adminLogs } = useAppStore()
 
->>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
   return (
     <div style={{ background: '#161618', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <PageTopbar pageTitle="System Administration" />
@@ -69,11 +60,11 @@ const AdminPanel: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {[
             { label: 'Total Active Users', value: '42,892', icon: Users, color: '#38BDF8' },
-<<<<<<< HEAD
+
             { label: 'Active SOS Alerts', value: String(activeSOS), icon: AlertTriangle, color: '#EF4444', pulse: activeSOS > 0 },
-=======
+
             { label: 'Active SOS Alerts', value: '3', icon: AlertTriangle, color: '#EF4444' },
->>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
+
             { label: 'System Health', value: '99.8%', icon: Activity, color: '#10B981' },
             { label: 'Camera Feeds', value: '1,204', icon: Search, color: '#A855F7' },
           ].map((stat, i) => (

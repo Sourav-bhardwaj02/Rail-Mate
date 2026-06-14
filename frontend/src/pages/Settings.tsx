@@ -1,6 +1,6 @@
 import React from 'react'
 import { PageTopbar } from '../components/layout/Navbar'
-import { Settings as SettingsIcon, Shield, Bell, User, Database, Sliders } from 'lucide-react'
+import { Settings as SettingsIcon, Shield, User, Database, Sliders } from 'lucide-react'
 import { useAppStore } from '../store/useAppStore'
 
 const Settings: React.FC = () => {

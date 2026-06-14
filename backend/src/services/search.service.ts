@@ -15,18 +15,12 @@ export const comparePerson = async (
       "SENDING TO AI"
     );
 
-<<<<<<< HEAD
     const aiServiceUrl =
       process.env.AI_SERVICE_URL || "http://localhost:8000";
 
     const response =
       await axios.post(
         `${aiServiceUrl}/api/analyze-frame`,
-=======
-    const response =
-      await axios.post(
-        "http://localhost:8000/api/analyze-frame",
->>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
         {
           frame
         }

@@ -29,7 +29,6 @@ Thumbs.db
 
 # Uploads (sensitive data)
 backend/uploads/
-<<<<<<< HEAD
 node_modules/
 venv/
 dist/
@@ -38,5 +37,3 @@ build/
 __pycache__/
 *.pyc
 storage/embeddings/
-=======
->>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98

@@ -32,11 +32,8 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-<<<<<<< HEAD
       ai-service:
         condition: service_started
-=======
->>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
     environment:
       NODE_ENV: production
       DATABASE_URL: postgresql://railmate_user:railmate_password@postgres:5432/railmate_db
@@ -45,10 +42,7 @@ services:
       CORS_ORIGINS: http://localhost:5173
       RATE_LIMIT_WINDOW_MS: 60000
       RATE_LIMIT_MAX: 60
-<<<<<<< HEAD
       AI_SERVICE_URL: http://ai-service:8000
-=======
->>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
     ports:
       - "5000:5000"
     networks:
@@ -83,11 +77,7 @@ services:
     networks:
       - railmate-network
     volumes:
-<<<<<<< HEAD
       - ai_embeddings:/app/storage/embeddings
-=======
-      - ./missing-person-tracker/ai-service:/app
->>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
     command: uvicorn app.main:app --host 0.0.0.0 --port 8000
 
 networks:
@@ -96,9 +86,6 @@ networks:
 
 volumes:
   postgres_data:
-<<<<<<< HEAD
     driver: local
   ai_embeddings:
-=======
->>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
     driver: local

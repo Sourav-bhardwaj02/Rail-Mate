@@ -29,11 +29,7 @@ export const LoginModal: React.FC = () => {
         return
       }
 
-<<<<<<< HEAD
       const res = await fetch('http://localhost:5000/api/auth/login', {
-=======
-      const res = await fetch('http://localhost:4750/api/auth/login', {
->>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -54,11 +50,7 @@ export const LoginModal: React.FC = () => {
       }
     } catch (error) {
       console.error('Login error:', error)
-<<<<<<< HEAD
       alert('Could not connect to the backend. Please ensure your Node server is running on port 5000!')
-=======
-      alert('Could not connect to the backend on port 4750. Please ensure your Node server is running!')
->>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
     }
   }
 
@@ -231,7 +223,6 @@ export const LoginModal: React.FC = () => {
           </button>
 
           <div style={{ textAlign: 'center', fontSize: 11, color: '#64748B' }}>
-<<<<<<< HEAD
             Don't have an account?{' '}
             <button 
               onClick={() => {
@@ -242,9 +233,6 @@ export const LoginModal: React.FC = () => {
             >
               Create an Account
             </button>
-=======
-            Don't have an account? <a href="#" style={{ color: '#38BDF8', textDecoration: 'none', fontWeight: 600 }}>Create an Account</a>
->>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
           </div>
 
         </motion.div>

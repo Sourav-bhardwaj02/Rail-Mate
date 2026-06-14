@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import "./config/db"; 
-=======
-import "../../../backend/src/config/db";
->>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
 
 import express from "express";
 import cors from "cors";

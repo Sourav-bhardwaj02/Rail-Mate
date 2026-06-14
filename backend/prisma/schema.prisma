@@ -17,10 +17,7 @@ model User {
   passwordHash  String
   phone         String?
   guardianEmail String?
-<<<<<<< HEAD
   guardianName  String?
-=======
->>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
   role          String     @default("USER")
   createdAt     DateTime   @default(now())
   updatedAt     DateTime   @updatedAt

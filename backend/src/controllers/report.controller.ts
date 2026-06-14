@@ -34,7 +34,6 @@ export const createNewReport = async (
         image2,
         image3,
       });
-<<<<<<< HEAD
 
     const personId = `person_${report.id}`;
     const aiServiceUrl =
@@ -92,58 +91,6 @@ export const createNewReport = async (
       success: true,
       data: report,
       personId,
-=======
-if (files?.[0]) {
-
-  try {
-
-    const formData =
-      new FormData();
-
-    formData.append(
-      "person_id",
-      "person1"
-    );
-
-    formData.append(
-      "image",
-      fs.createReadStream(
-        path.join(
-          "uploads",
-          files[0].filename
-        )
-      )
-    );
-
-    const aiResponse =
-      await axios.post(
-        "http://127.0.0.1:8000/api/upload-person",
-        formData,
-        {
-          headers:
-            formData.getHeaders(),
-        }
-      );
-
-    console.log(
-      "AI REGISTERED:",
-      aiResponse.data
-    );
-
-  } catch (err) {
-
-    console.error(
-      "AI REGISTER ERROR:",
-      err
-    );
-
-  }
-
-}
-    return res.status(201).json({
-      success: true,
-      data: report,
->>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
     });
 
   } catch (error) {

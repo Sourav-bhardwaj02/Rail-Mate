@@ -55,7 +55,6 @@ const RoutePlanner: React.FC = () => {
   const [routes, setRoutes] = useState<typeof MOCK_ROUTES>([])
   const [expanded, setExpanded] = useState<string | null>(null)
 
-<<<<<<< HEAD
   const handleSearch = async () => {
     if (!from || !to || !date) {
       alert("Please enter source, destination and date");
@@ -79,12 +78,6 @@ const RoutePlanner: React.FC = () => {
     } finally {
       setLoading(false)
     }
-=======
-  const handleSearch = () => {
-    if (!from || !to) return
-    setLoading(true)
-    setTimeout(() => { setLoading(false); setRoutes(MOCK_ROUTES) }, 1500)
->>>>>>> 4ea3bf70174b0f06a3f0916e91d133fcaca16d98
   }
 
   const scoreColor = (s: number) => s >= 85 ? '#10B981' : s >= 65 ? '#F59E0B' : '#EF4444'
