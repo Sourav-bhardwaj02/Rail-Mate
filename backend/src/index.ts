@@ -97,6 +97,9 @@ app.use(
   })
 );
 
+console.log("process.env.CORS_ORIGINS =", process.env.CORS_ORIGINS);
+console.log("CORS_ORIGINS =", CORS_ORIGINS);
+
 
 // ======================
 // Body Parser
